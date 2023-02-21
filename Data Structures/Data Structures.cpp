@@ -272,5 +272,32 @@ int main()
 
 	cout << TaylorSeries(3, 4) << endl;
 
+
+
+
+
+	// Arrays
+	// static array is created in the stack whereas dynamic array is created in the heap	
+	int staticArray1[] = { 1, 2,3,4,5 };
+
+	int* PointerDynamicArray1;
+
+	PointerDynamicArray1 = new int[5];
+
+	// Deleting dynamic array from heap
+	delete[]PointerDynamicArray1;
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 

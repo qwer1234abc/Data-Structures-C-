@@ -54,6 +54,26 @@ void TailRecursion(int n)
  * Space taken for Tail Recursion is O(n) but for loop is O(1)
  * If ever a Tail Recursion is needed it is better to convert it into a loop as it is more efficient
  */
+
+
+// Head Recursion
+// Recursive call is the first statement in the function call
+// Opposite of Tail Recursion as it does not need to perform anything at the time of calling but at the time of returning
+
+
+void HeadRecursion(int n)
+{
+	if (n > 0)
+	{
+		HeadRecursion(n - 1);
+		cout << n << endl;
+	}
+}
+
+
+/** Compare Head Recursion with loop
+ *
+ */
 int main()
 {
 
@@ -65,7 +85,7 @@ int main()
 	r = staticRecursion(3);
 	cout << r << endl;
 
-
+	HeadRecursion(3);
 
 
 

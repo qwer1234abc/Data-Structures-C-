@@ -93,6 +93,82 @@ void TreeRecursion(int n)
 }
 
 
+/** Tree Recursion Notes
+ * Number of calls = O(2n)
+ * If n = 3, 15 calls in 1, 2, 4, 8 in each level
+ * 2**n+1 -1
+ */
+
+
+// Indirect Recursion
+// May be more than one function calling one another in a circular fashion
+void IndirectRecursionB(int n);
+void IndirectRecursionA(int n)
+{
+	if (n > 0)
+	{
+		cout << n << endl;
+		IndirectRecursionB(n - 1);
+	}
+}
+
+void IndirectRecursionB(int n)
+{
+	if (n > 1)
+	{
+		cout << n << endl;
+		IndirectRecursionA(n / 2);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -111,7 +187,7 @@ int main()
 
 	HeadRecursion(3);
 	TreeRecursion(3);
-
+	IndirectRecursionA(20);
 
 
     return 0;

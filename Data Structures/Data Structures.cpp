@@ -139,9 +139,18 @@ int NestedRecursion(int n)
 }
 
 
+// Sum of first 'n' Natural Numbers 
 
-
-
+int SumOfNaturalNumber(int n)
+{
+	if (n == 0)
+	{
+		return 0;
+	}else
+	{
+		return SumOfNaturalNumber(n - 1) + n;
+	}
+}
 
 
 
@@ -202,6 +211,12 @@ int main()
 	TreeRecursion(3);
 	IndirectRecursionA(20);
 	cout << endl << NestedRecursion(30) << endl;
+
+	cout << SumOfNaturalNumber(5) << endl;
+
+
+
+
 
     return 0;
 }

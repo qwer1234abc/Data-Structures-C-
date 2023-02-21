@@ -107,7 +107,7 @@ void IndirectRecursionA(int n)
 {
 	if (n > 0)
 	{
-		cout << n << endl;
+		cout << n << " ";
 		IndirectRecursionB(n - 1);
 	}
 }
@@ -116,14 +116,27 @@ void IndirectRecursionB(int n)
 {
 	if (n > 1)
 	{
-		cout << n << endl;
+		cout << n << " ";
 		IndirectRecursionA(n / 2);
 	}
 }
 
 
+// Nested Recursion
+// Pass parameter as a recursive call
 
+int NestedRecursion(int n)
+{
+	if (n > 100)
+	{
+		return n - 10;
+	}
+	else
+	{
+		return NestedRecursion(NestedRecursion(n + 11));
+	}
 
+}
 
 
 
@@ -188,7 +201,7 @@ int main()
 	HeadRecursion(3);
 	TreeRecursion(3);
 	IndirectRecursionA(20);
-
+	cout << endl << NestedRecursion(30) << endl;
 
     return 0;
 }

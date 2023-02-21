@@ -179,10 +179,42 @@ int Power(int n, int m)
 	}
 }
 
+// Better Method
+int BetterPower(int m, int n)
+{
+	if (n == 0)
+	{
+		return 1;
+	}
+	if (n % 2 == 0)
+	{
+		return BetterPower(m * m, n / 2);
+	}
+	else
+	{
+		return m * BetterPower(m * m, (n - 1) / 2);
+	}
+}
 
 
+// Taylor Series Using Recursion
 
-
+int TaylorSeries(int x, int n)
+{
+	static int p = 1, f = 1;
+	int r;
+	if (n == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		r = TaylorSeries(x, n - 1);
+		p = p * x;
+		f = f * n;
+		return r + p / f;
+	}
+}
 
 
 
@@ -236,6 +268,9 @@ int main()
 
 	cout << Power(2,3) << endl;
 
-    return 0;
+	cout << BetterPower(2, 3) << endl;
+
+	cout << TaylorSeries(3, 4) << endl;
+
 }
 

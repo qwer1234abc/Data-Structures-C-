@@ -154,8 +154,17 @@ int SumOfNaturalNumber(int n)
 
 
 
-
-
+// Factorial Of A Number
+int FactorialOfNumber(int n)
+{
+	if (n == 0)
+	{
+		return (1);
+	}else
+	{
+		return FactorialOfNumber(n - 1) * n;
+	}
+}
 
 
 
@@ -214,7 +223,7 @@ int main()
 
 	cout << SumOfNaturalNumber(5) << endl;
 
-
+	cout << FactorialOfNumber(5) << endl;
 
 
 

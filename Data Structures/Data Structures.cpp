@@ -167,8 +167,17 @@ int FactorialOfNumber(int n)
 }
 
 
-
-
+// Power Using Recursion
+int Power(int n, int m)
+{
+	if (n == 0)
+	{
+		return 1;
+	}else
+	{
+		return Power(n - 1, m) * m;
+	}
+}
 
 
 
@@ -225,7 +234,7 @@ int main()
 
 	cout << FactorialOfNumber(5) << endl;
 
-
+	cout << Power(2,3) << endl;
 
     return 0;
 }

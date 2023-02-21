@@ -72,8 +72,32 @@ void HeadRecursion(int n)
 
 
 /** Compare Head Recursion with loop
- *
+ * Not easily converted into a loop
  */
+
+
+// Linear Recursion
+// Function is calling itself only one time
+
+// Tree Recursion
+// Function is calling itself more than one time
+
+void TreeRecursion(int n)
+{
+	if (n > 0)
+	{
+		cout << n << " ";
+		TreeRecursion(n - 1);
+		TreeRecursion(n - 1);
+	}
+}
+
+
+
+
+
+
+
 int main()
 {
 
@@ -86,7 +110,7 @@ int main()
 	cout << r << endl;
 
 	HeadRecursion(3);
-
+	TreeRecursion(3);
 
 
 

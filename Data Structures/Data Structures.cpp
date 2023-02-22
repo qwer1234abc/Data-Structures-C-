@@ -879,9 +879,9 @@ Array* Array::Diff(Array arr2)
 
 
 
+/*
 int main()
 {
-	/*
 	BasicRecursion(3);
 
 	int r = staticRecursion(3);
@@ -1034,7 +1034,6 @@ int main()
 	// Intersection
 	// Difference
 	// Set Membership
-	*/
 	Array* arr1;
 	int ch, sz;
 	int x, index;
@@ -1078,5 +1077,38 @@ int main()
 
 		}
 	} while (ch < 6);
-}
 
+
+}
+	*/
+
+int main()
+{
+	// Strings - ASCII Codes, Unicode
+	// Termination character \0
+	// Length of String
+	char firstString[] = "WELCOME";
+	int i;
+	for (i = 0; firstString[i] != '\0'; i++)
+	{
+
+	}
+
+	cout << "Length of string is " << i << endl;
+
+	// Changing Case using ASCII code
+	for (int i = 0; firstString[i] != '\0'; i++)
+	{
+		if (firstString[i] >= 'A' && firstString[i] <= 'Z')
+		{
+			firstString[i] += 32;
+		}
+		else if (firstString[i] >= 'a' && firstString[i] <= 'z')
+		{
+			firstString[i] = 32;
+		}
+	}
+	cout << ("Lower case of string is ") << firstString << endl;
+
+
+}

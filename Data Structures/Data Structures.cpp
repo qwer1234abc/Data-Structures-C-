@@ -302,8 +302,7 @@ int main()
 	int TwoDimensionalArray1[3][4] = { {1,2,3,4} ,{2,4,6,8}, {2,5,10,15} };
 
 	// creating in heap
-	int ** Dynamic2DArray1;
-	Dynamic2DArray1 = new int* [3];
+	int ** Dynamic2DArray1 = new int* [3];
 	Dynamic2DArray1[0] = new int[4];
 	Dynamic2DArray1[1] = new int[4];
 	Dynamic2DArray1[2] = new int[4];
@@ -315,6 +314,27 @@ int main()
 		}
 	}
 
+	// Representation Of Array in Compiler -> Base Address + index + size of data type
 
+	// n as number of elements in row
+	// m as number of elements in column
+	// Row Major Mapping Formula For 2D Array
+
+	// Address Array[i][j] = Base Address + [i * n + j] * size of data type
+
+	// Column Major Formula For 2D Array
+
+	// Address Array[i][j] = Base Address + [j * m + i] * size of data type
+
+	// Formulas For nD Arrays
+	// Refer to SS in telegram
+	
+	// Row Major Formula For 3D Array
+
+	// Address Array[i][j][k] = Base Address + [i * m * n + j * n + k] * size of data type
+
+	// Column Major Formula For 3D Array
+
+	// Address Array[i][j][k] = Base Address + [k * l * m + j * l + i] * size of data type
 }
 

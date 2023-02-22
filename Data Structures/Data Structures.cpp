@@ -280,20 +280,22 @@ int main()
 	// static array is created in the stack whereas dynamic array is created in the heap	
 	int staticArray1[] = { 1, 2,3,4,5 };
 
-	int* PointerDynamicArray1;
-
-	PointerDynamicArray1 = new int[5];
+	int* dynamicArray1 = new int[5];
 
 	// Deleting dynamic array from heap
-	delete[]PointerDynamicArray1;
 
+	// Increase Array Size
 
+	int* dynamicArray2 = new int[10];
 
-
-
-
-
-
+	for (int i = 0; i < 5; i ++)
+	{
+		dynamicArray2 = dynamicArray1;
+	}
+	delete[]dynamicArray1;
+	dynamicArray1 = dynamicArray2;
+	dynamicArray2 = nullptr;
+	// new address and location of new array to the 2nd array
 
 
 

@@ -465,9 +465,41 @@ public:
 		display();
 	}
 
-	// Left Shift/Rotate
+	bool isSorted(Array1* arr, int n)
+	{
+		for (int i = 0; i < n - 1; i++)
+		{
+			if (A[i] > A[i + 1])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 
+	// Splitting Positive and Negative Number
 
+	void seperatePositiveNegative(Array1* arr)
+	{
+		int i = 0;
+		int j = arr->length - 1;
+		while (i < j)
+		{
+
+			while (A[i] < 0)
+			{
+				i++;
+			}
+			while (A[j] >= 0)
+			{
+				j--;
+			}
+			if (i < j)
+			{
+				swap(arr->A[i], arr->A[j]);
+			}
+		}
+	}
 
 
 
@@ -480,24 +512,6 @@ public:
 		cout << endl << "Array Example Destroyed" << endl;
 	}
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -531,9 +545,6 @@ int main()
 	cout << BetterPower(2, 3) << endl;
 
 	cout << TaylorSeries(3, 4) << endl;
-
-
-
 
 
 	// Arrays
@@ -644,6 +655,18 @@ int main()
 	cout << endl;
 	arr.secondReverse(&arr);
 	cout << endl;
+
+	// Sorted Array
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -437,6 +437,42 @@ public:
 	}
 
 
+	void firstReverse(Array1* arr)
+	{
+		int* B;
+		B = new int[arr->length];
+		for (int i = arr->length - 1, j = 0; i >= 0; i--, j++)
+		{
+			B[j] = A[i];
+		}
+		for (int i = 0; i < arr->length; i++)
+		{
+			A[i] = B[i];
+		}
+		display();
+	}
+
+
+	void secondReverse(Array1* arr)
+	{
+
+		for (int i = 0, j = arr->length - 1; i < j; i++, j--)
+		{
+			int temp = A[i];
+			A[i] = A[j];
+			A[j] = temp;
+		}
+		display();
+	}
+
+	// Left Shift/Rotate
+
+
+
+
+
+
+
 
 
 	~Array1() {
@@ -603,10 +639,11 @@ int main()
 	cout << arr.max(&arr) << endl;
 	cout << arr.min(&arr) << endl;
 
-
-
-
-
+	// Reverse and Shift Array
+	arr.firstReverse(&arr);
+	cout << endl;
+	arr.secondReverse(&arr);
+	cout << endl;
 
 
 }

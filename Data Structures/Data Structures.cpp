@@ -288,6 +288,47 @@ public:
 		}
 		display();
 	}
+	int linearSearch(Array1 * arr, int x)
+	{
+		for (int i = 0; i < arr->length; i++)
+		{
+			if(A[i] == x)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	// Transposition Linear Search (Improved)
+	int improvedLinearSearch(Array1 * arr, int x)
+	{
+		for (int i = 0; i < arr -> length; i ++)
+		{
+			if (A[i] == x)
+			{
+				swap(A[i], A[i - 1]);
+				return i - 1;
+			}
+		}
+		return -1;
+	}
+
+	// Move to front Linear Search
+	int anotherImprovedLinearSearch(Array1 *arr, int x)
+	{
+		for (int i = 0; i < arr->length; i ++)
+		{
+			swap(A[i], A[0]);
+			return 0;
+		}
+		return -1;
+	}
+
+
+
+
+
+
 
 	~Array1() {
 		delete[] A;
@@ -433,9 +474,27 @@ int main()
 	arr.insert(&arr, 3, 100);
 	cout << endl;
 
-	// Delete
+	// Delete 
 	arr.del(&arr, 3);
 	cout << endl;
+
+	// Search
+	// Linear Search (Checking elements one by one)
+	// Binary Search
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

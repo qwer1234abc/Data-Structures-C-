@@ -232,18 +232,35 @@ private:
 	int length;
 
 public:
-	Array1(int size) {
-		this->size = size;
-		A = new int[size];
-	}
+	Array1(int size, int length, bool sorted = false) {
 
-	void create() {
-		cout << "Enter number of elements: " << flush;
-		cin >> length;
-		cout << "Enter the array elements: " << endl;
-		for (int i = 0; i < length; i++) {
-			cout << "Array element: " << i << " = " << flush;
-			cin >> A[i];
+		this->size = size;
+		this->length = length;
+
+		A = new int[size];
+
+		if (sorted) {
+			cout << "Enter ints in sorted manner" << endl;
+			for (int i = 0; i < length; i++) {
+				cout << "Enter element " << i << " : " << flush;
+				cin >> A[i];
+			}
+		}
+		else {
+			for (int i = 0; i < length; i++) {
+
+				int val;
+				val = rand() % 100;  // Random int in range 0 to 100
+
+				// Generate random binary int and make value negative
+				if (rand() % 2) {
+					A[i] = -1 * val;
+				}
+				else {
+					A[i] = val;
+				}
+
+			}
 		}
 	}
 
@@ -368,20 +385,15 @@ public:
 		return -1;
 	}
 
-
-	int get(Array1* arr, int index)
-	{
-		if (index >= 0 && index < arr->length)
-		{
+	int get(int index) {
+		if (index >= 0 && index < length) {
 			return A[index];
 		}
 	}
 
-	int set(Array1* arr, int index, int x)
-	{
-		if (index >= 0 && index < arr->length)
-		{
-			return A[index] = x;
+	void set(int index, int x) {
+		if (index >= 0 && index < length) {
+			A[index] = x;
 		}
 	}
 
@@ -502,7 +514,27 @@ public:
 	}
 
 
-
+	Array1 Merge(Array1& B) {
+		Array1 C(length + B.length, length + B.length);
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		while (i < length && j < B.length) {
+			if (A[i] < B.get(j)) {
+				C.set(k++, A[i++]);
+			}
+			else {
+				C.set(k++, B.get(j++));
+			}
+		}
+		for (; i < length; i++) {
+			C.set(k++, A[i]);
+		}
+		for (; j < B.length; j++) {
+			C.set(k++, B.get(j));
+		}
+		return C;
+	}
 
 
 
@@ -610,8 +642,7 @@ int main()
 	// Address Array[i][j][k] = Base Address + [k * l * m + j * l + i] * size of data type
 
 	// Array ADT (Data, Operations)
-	Array1 arr(10);
-	arr.create();
+	Array1 arr(10, 5, true);
 	arr.display();
 	cout << endl;
 	// Display and array
@@ -643,8 +674,8 @@ int main()
 
 	// Get Set Avg Max Functions
 
-	cout << arr.get(&arr, 3) << endl;
-	cout << arr.set(&arr, 4, 5) << endl;
+	cout << arr.get(3) << endl;
+	arr.set(4, 5);
 	cout << arr.sum(&arr) << endl;
 	cout << arr.average(&arr) << endl;
 	cout << arr.max(&arr) << endl;
@@ -659,10 +690,16 @@ int main()
 	// Sorted Array
 
 
+	// Merging Array
+	// 1. Append
+	// 2. Concat
+	// 3. Compare
+	// 4. Copy
+	Array1 MergedArray1(10, 5, true);
+	Array1 MergedArray2(10, 4, true);
 
-
-
-
+	Array1 Z = MergedArray1.Merge(MergedArray2);
+	Z.display();
 
 
 

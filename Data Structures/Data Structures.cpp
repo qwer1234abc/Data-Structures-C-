@@ -1,6 +1,7 @@
 // Data structure is the arrangement of collection data items so that operations on them can be done efficiently.
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 
@@ -368,6 +369,75 @@ public:
 	}
 
 
+	int get(Array1* arr, int index)
+	{
+		if (index >= 0 && index < arr->length)
+		{
+			return A[index];
+		}
+	}
+
+	int set(Array1* arr, int index, int x)
+	{
+		if (index >= 0 && index < arr->length)
+		{
+			return A[index] = x;
+		}
+	}
+
+	int max(Array1* arr)
+	{
+		int max = arr->A[0];
+		for (int i = 0; i < arr->length; i++)
+		{
+			if (A[i] > max)
+			{
+				max = arr->A[i];
+			}
+		}
+		return max;
+	}
+
+	int min(Array1* arr)
+	{
+		int min = arr->A[0];
+		for (int i = 0; i < arr->length; i++)
+		{
+			if (A[i] < min)
+			{
+				min = arr->A[i];
+			}
+		}
+		return min;
+	}
+	int sum(Array1* arr)
+	{
+		int total = 0;
+		for (int i = 0; i < arr->length; i++)
+		{
+			total += A[i];
+		}
+		return total;
+	}
+	int recursionSum(Array1* arr, int n)
+	{
+		if (n < 0)
+		{
+			return 0;
+		}
+		else
+		{
+			recursionSum(arr, n - 1) + A[n];
+		}
+
+	}
+	float average(Array1* arr)
+	{
+		return (float)sum(arr) / arr->length;
+	}
+
+
+
 
 	~Array1() {
 		delete[] A;
@@ -524,12 +594,14 @@ int main()
 	cout << arr.recursiveBinarySearch(0, 5, 3) << endl;
 
 
+	// Get Set Avg Max Functions
 
-
-
-
-
-
+	cout << arr.get(&arr, 3) << endl;
+	cout << arr.set(&arr, 4, 5) << endl;
+	cout << arr.sum(&arr) << endl;
+	cout << arr.average(&arr) << endl;
+	cout << arr.max(&arr) << endl;
+	cout << arr.min(&arr) << endl;
 
 
 

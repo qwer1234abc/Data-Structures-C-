@@ -275,7 +275,7 @@ public:
 		display();
 	}
 
-	void del(Array1 * arr, int index)
+	void del(Array1* arr, int index)
 	{
 		int i;
 		if (index >= 0 && index <= arr->length)
@@ -288,11 +288,11 @@ public:
 		}
 		display();
 	}
-	int linearSearch(Array1 * arr, int x)
+	int linearSearch(Array1* arr, int x)
 	{
 		for (int i = 0; i < arr->length; i++)
 		{
-			if(A[i] == x)
+			if (A[i] == x)
 			{
 				return i;
 			}
@@ -300,9 +300,9 @@ public:
 		return -1;
 	}
 	// Transposition Linear Search (Improved)
-	int improvedLinearSearch(Array1 * arr, int x)
+	int improvedLinearSearch(Array1* arr, int x)
 	{
-		for (int i = 0; i < arr -> length; i ++)
+		for (int i = 0; i < arr->length; i++)
 		{
 			if (A[i] == x)
 			{
@@ -314,9 +314,9 @@ public:
 	}
 
 	// Move to front Linear Search
-	int anotherImprovedLinearSearch(Array1 *arr, int x)
+	int anotherImprovedLinearSearch(Array1* arr, int x)
 	{
-		for (int i = 0; i < arr->length; i ++)
+		for (int i = 0; i < arr->length; i++)
 		{
 			swap(A[i], A[0]);
 			return 0;
@@ -324,9 +324,48 @@ public:
 		return -1;
 	}
 
+	int binarySearch(int l, int h, int key)
+	{
+		while (l <= h)
+		{
 
+			int m = (l + h) / 2;
+			if (key == A[m])
+			{
+				return m;
+			}
+			else if (key < A[m])
+			{
+				h = m - 1;
+			}
+			else
+			{
+				l = m + 1;
+			}
+		}
+		return -1;
+	}
 
-
+	int recursiveBinarySearch(int l, int h, int key)
+	{
+		if (l <= h)
+		{
+			int m = (l + h) / 2;
+			if (key == A[m])
+			{
+				return m;
+			}
+			else if (key < A[m])
+			{
+				return recursiveBinarySearch(l, m - 1, key);
+			}
+			else
+			{
+				return recursiveBinarySearch(m + 1, h, key);
+			}
+		}
+		return -1;
+	}
 
 
 
@@ -480,8 +519,9 @@ int main()
 
 	// Search
 	// Linear Search (Checking elements one by one)
-	// Binary Search
+	// Binary Search (Array must be sorted) (Check the middle first and split the array into 2) (lower, higher, middle = (higher + lower)/2)
 
+	cout << arr.recursiveBinarySearch(0, 5, 3) << endl;
 
 
 

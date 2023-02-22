@@ -297,8 +297,23 @@ int main()
 	dynamicArray2 = nullptr;
 	// new address and location of new array to the 2nd array
 
+	// 2D Array
+	// 3 row 4 column
+	int TwoDimensionalArray1[3][4] = { {1,2,3,4} ,{2,4,6,8}, {2,5,10,15} };
 
-
+	// creating in heap
+	int ** Dynamic2DArray1;
+	Dynamic2DArray1 = new int* [3];
+	Dynamic2DArray1[0] = new int[4];
+	Dynamic2DArray1[1] = new int[4];
+	Dynamic2DArray1[2] = new int[4];
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			cout << TwoDimensionalArray1[i][j] << " ";
+		}
+	}
 
 
 }

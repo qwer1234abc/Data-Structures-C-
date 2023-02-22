@@ -259,6 +259,7 @@ public:
 		}
 		display();
 	}
+
 	void insert(Array1* arr, int index, int x)
 	{
 		int i;
@@ -270,6 +271,20 @@ public:
 			}
 			arr->A[index] = x;
 			arr->length++;
+		}
+		display();
+	}
+
+	void del(Array1 * arr, int index)
+	{
+		int i;
+		if (index >= 0 && index <= arr->length)
+		{
+			for (i = index; i < length - 1; i++)
+			{
+				A[i] = A[i + 1];
+			}
+			arr->length--;
 		}
 		display();
 	}
@@ -417,6 +432,11 @@ int main()
 	// Insert
 	arr.insert(&arr, 3, 100);
 	cout << endl;
+
+	// Delete
+	arr.del(&arr, 3);
+	cout << endl;
+
 
 }
 

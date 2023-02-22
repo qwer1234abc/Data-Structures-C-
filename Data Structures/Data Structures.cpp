@@ -36,9 +36,9 @@ int staticRecursion(int n)
  * Nested Recursion
  */
 
-// Tail Recursion
-// If a recursive function is calling itself and the recursive call is the last statement in the function it is a Tail Recursion
-// Everything is performed at calling time and at returning time nothing is performed at all
+ // Tail Recursion
+ // If a recursive function is calling itself and the recursive call is the last statement in the function it is a Tail Recursion
+ // Everything is performed at calling time and at returning time nothing is performed at all
 void TailRecursion(int n)
 {
 	if (n > 0)
@@ -56,9 +56,9 @@ void TailRecursion(int n)
  */
 
 
-// Head Recursion
-// Recursive call is the first statement in the function call
-// Opposite of Tail Recursion as it does not need to perform anything at the time of calling but at the time of returning
+ // Head Recursion
+ // Recursive call is the first statement in the function call
+ // Opposite of Tail Recursion as it does not need to perform anything at the time of calling but at the time of returning
 
 
 void HeadRecursion(int n)
@@ -76,11 +76,11 @@ void HeadRecursion(int n)
  */
 
 
-// Linear Recursion
-// Function is calling itself only one time
+ // Linear Recursion
+ // Function is calling itself only one time
 
-// Tree Recursion
-// Function is calling itself more than one time
+ // Tree Recursion
+ // Function is calling itself more than one time
 
 void TreeRecursion(int n)
 {
@@ -100,8 +100,8 @@ void TreeRecursion(int n)
  */
 
 
-// Indirect Recursion
-// May be more than one function calling one another in a circular fashion
+ // Indirect Recursion
+ // May be more than one function calling one another in a circular fashion
 void IndirectRecursionB(int n);
 void IndirectRecursionA(int n)
 {
@@ -146,7 +146,8 @@ int SumOfNaturalNumber(int n)
 	if (n == 0)
 	{
 		return 0;
-	}else
+	}
+	else
 	{
 		return SumOfNaturalNumber(n - 1) + n;
 	}
@@ -160,7 +161,8 @@ int FactorialOfNumber(int n)
 	if (n == 0)
 	{
 		return (1);
-	}else
+	}
+	else
 	{
 		return FactorialOfNumber(n - 1) * n;
 	}
@@ -173,7 +175,8 @@ int Power(int n, int m)
 	if (n == 0)
 	{
 		return 1;
-	}else
+	}
+	else
 	{
 		return Power(n - 1, m) * m;
 	}
@@ -220,6 +223,62 @@ int TaylorSeries(int x, int n)
 
 
 
+class Array1 {
+
+private:
+	int* A;
+	int size;
+	int length;
+
+public:
+	Array1(int size) {
+		this->size = size;
+		A = new int[size];
+	}
+
+	void create() {
+		cout << "Enter number of elements: " << flush;
+		cin >> length;
+		cout << "Enter the array elements: " << endl;
+		for (int i = 0; i < length; i++) {
+			cout << "Array element: " << i << " = " << flush;
+			cin >> A[i];
+		}
+	}
+
+	void display() {
+		for (int i = 0; i < length; i++) {
+			cout << A[i] << " ";
+		}
+	}
+	void append(Array1* arr, int x)
+	{
+		if (arr->length < arr->size)
+		{
+			arr->A[arr->length++] = x;
+		}
+		display();
+	}
+	void insert(Array1* arr, int index, int x)
+	{
+		int i;
+		if (index >= 0 && index <= arr->length)
+		{
+			for (i = arr->length; i > index; i--)
+			{
+				arr->A[i] = arr->A[i - 1];
+			}
+			arr->A[index] = x;
+			arr->length++;
+		}
+		display();
+	}
+
+	~Array1() {
+		delete[] A;
+		cout << endl << "Array Example Destroyed" << endl;
+	}
+};
 
 
 
@@ -266,7 +325,7 @@ int main()
 
 	cout << FactorialOfNumber(5) << endl;
 
-	cout << Power(2,3) << endl;
+	cout << Power(2, 3) << endl;
 
 	cout << BetterPower(2, 3) << endl;
 
@@ -288,7 +347,7 @@ int main()
 
 	int* dynamicArray2 = new int[10];
 
-	for (int i = 0; i < 5; i ++)
+	for (int i = 0; i < 5; i++)
 	{
 		dynamicArray2 = dynamicArray1;
 	}
@@ -302,7 +361,7 @@ int main()
 	int TwoDimensionalArray1[3][4] = { {1,2,3,4} ,{2,4,6,8}, {2,5,10,15} };
 
 	// creating in heap
-	int ** Dynamic2DArray1 = new int* [3];
+	int** Dynamic2DArray1 = new int* [3];
 	Dynamic2DArray1[0] = new int[4];
 	Dynamic2DArray1[1] = new int[4];
 	Dynamic2DArray1[2] = new int[4];
@@ -313,6 +372,7 @@ int main()
 			cout << TwoDimensionalArray1[i][j] << " ";
 		}
 	}
+	cout << endl;
 
 	// Representation Of Array in Compiler -> Base Address + index + size of data type
 
@@ -328,7 +388,7 @@ int main()
 
 	// Formulas For nD Arrays
 	// Refer to SS in telegram
-	
+
 	// Row Major Formula For 3D Array
 
 	// Address Array[i][j][k] = Base Address + [i * m * n + j * n + k] * size of data type
@@ -336,5 +396,27 @@ int main()
 	// Column Major Formula For 3D Array
 
 	// Address Array[i][j][k] = Base Address + [k * l * m + j * l + i] * size of data type
+
+	// Array ADT (Data, Operations)
+	Array1 arr(10);
+	arr.create();
+	arr.display();
+	cout << endl;
+	// Display and array
+	int exampleArray[5] = { 1,2,3,4,5 };
+
+	for (int i = 0; i < sizeof(exampleArray) / sizeof(int); i++)
+	{
+		cout << exampleArray[i] << " ";
+	}
+	cout << endl;
+
+	// Add/Append
+	arr.append(&arr, 6);
+	cout << endl;
+	// Insert
+	arr.insert(&arr, 3, 100);
+	cout << endl;
+
 }
 

@@ -1080,7 +1080,6 @@ int main()
 
 
 }
-	*/
 class Diagonal
 {
 private:
@@ -1283,6 +1282,63 @@ int main()
 	cm.setColMajor(4, 4, 10);
 
 	cm.Display(false);
+}
+*/
+
+class Node
+{
+public:
+	int data;
+	Node* next;
+};
+
+
+
+
+int main()
+{
+	// Linked List
+	// Array is fixed size which is not good during run time
+
+	// Linked List is a collections of nodes where each node contains data and pointed to next node
+	// Node consists of data and pointer to next node
+	// pointer of its on type (a node)
+
+	int A[] = { 3, 5, 7, 10, 15 };
+
+	Node* head = new Node;
+
+	Node* temp;
+	Node* last;
+
+	head->data = A[0];
+	cout << head->next << endl;
+	last = head;
+
+	// Create a Linked List
+	for (int i = 1; i < sizeof(A) / sizeof(A[0]); i++) {
+
+		// Create a temporary Node
+		temp = new Node;
+
+		// Populate temporary Node
+		temp->data = A[i];
+		temp->next = nullptr;
+
+		// last's next is pointing to temp
+		last->next = temp;
+		last = temp;
+	}
+
+	// Display Linked List
+	Node* p = head;
+	cout << p->next << endl;
+	while (p != nullptr) {
+		cout << p->data << " -> " << flush;
+		cout << p->next<<endl;
+		p = p->next;
+	}
+
 
 
 }

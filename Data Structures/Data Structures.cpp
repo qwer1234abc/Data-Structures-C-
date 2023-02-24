@@ -1296,20 +1296,49 @@ void recursiveDisplayLinkedList(Node* p)
 {
 	if (p != NULL)
 	{
-		cout << p->data << " -> "<< flush;
+		cout << p->data << " -> " << flush;
 		recursiveDisplayLinkedList(p->next);
 	}
 }
 
 
-void recursiveReverseDisplayLinkedList(Node*p)
+void recursiveReverseDisplayLinkedList(Node* p)
 {
 	if (p != NULL)
 	{
 		recursiveReverseDisplayLinkedList(p->next);
-		cout << p->data << " -> " <<flush;
+		cout << p->data << " -> " << flush;
 	}
 }
+
+
+// Counting nodes in linked list
+
+int countNode(Node* p)
+{
+	int count = 0;
+	while (p != 0)
+	{
+		count++;
+		p->next;
+	}
+	return  count;
+}
+
+int recursiveCountNode(Node* p)
+{
+	int count = 0;
+	if (p == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return recursiveCountNode(p->next) + 1;
+	}
+}
+
+
 
 
 int main()
@@ -1354,5 +1383,5 @@ int main()
 	}
 	cout << endl;
 	recursiveReverseDisplayLinkedList(head);
-
+	cout << recursiveCountNode(head) << endl;
 }

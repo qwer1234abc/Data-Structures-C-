@@ -1380,7 +1380,59 @@ int maxLinkedList(Node* p)
 	return x;
 }
 
+int recursiveMaxLinkedList(Node* p)
+{
+	if (p == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int x = recursiveMaxLinkedList(p->next);
+		return x > p->data ? x : p->data;
+	}
 
+}
+
+// Searching in a linked list ( cannot use binary search )
+
+bool searchLinkedList(Node * p, int key)
+{
+	while (p!= 0)
+	{
+		if (p-> data == key)
+		{
+			return true;
+		}
+		else
+		{
+			p = p->next;
+		}
+
+	}
+	return false;
+
+}
+
+
+Node * recursiveSearchLinkedList(Node * p, int key)
+{
+	if (p == NULL)
+	{
+		return NULL;
+	}
+	else
+	{
+		if (key == p->data)
+		{
+			return p;
+		}
+		else
+		{
+			return recursiveSearchLinkedList(p->next, key);
+		}
+	}
+}
 
 
 
@@ -1429,4 +1481,5 @@ int main()
 	cout << endl << recursiveCountNode(head) << endl;
 	cout << AddLinkedList(head) << endl;
 	cout << maxLinkedList(head) << endl;
+	cout << recursiveSearchLinkedList(head,15) << endl;
 }

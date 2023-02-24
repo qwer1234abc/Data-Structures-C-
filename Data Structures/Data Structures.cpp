@@ -1327,7 +1327,6 @@ int countNode(Node* p)
 
 int recursiveCountNode(Node* p)
 {
-	int count = 0;
 	if (p == 0)
 	{
 		return 0;
@@ -1335,6 +1334,30 @@ int recursiveCountNode(Node* p)
 	else
 	{
 		return recursiveCountNode(p->next) + 1;
+	}
+}
+
+// Sum of elements in linked list
+
+int AddLinkedList(Node* p)
+{
+	int sum = 0;
+	while (p != NULL)
+	{
+		sum += p->data;
+		p = p->next;
+	}
+}
+
+int recursiveAddLinkedList(Node* p)
+{
+	if (p == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		return recursiveAddLinkedList(p->next) + p->data;
 	}
 }
 
@@ -1383,5 +1406,5 @@ int main()
 	}
 	cout << endl;
 	recursiveReverseDisplayLinkedList(head);
-	cout << recursiveCountNode(head) << endl;
+	cout << endl << recursiveCountNode(head) << endl;
 }

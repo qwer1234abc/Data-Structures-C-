@@ -1347,6 +1347,7 @@ int AddLinkedList(Node* p)
 		sum += p->data;
 		p = p->next;
 	}
+	return sum;
 }
 
 int recursiveAddLinkedList(Node* p)
@@ -1360,6 +1361,25 @@ int recursiveAddLinkedList(Node* p)
 		return recursiveAddLinkedList(p->next) + p->data;
 	}
 }
+
+
+// Maximum Element in linked list 
+
+int maxLinkedList(Node* p)
+{
+	int x = p->data;
+
+	while (p != NULL)
+	{
+		if (p->data > x)
+		{
+			x = p->data;
+		}
+		p = p->next;
+	}
+	return x;
+}
+
 
 
 
@@ -1407,4 +1427,6 @@ int main()
 	cout << endl;
 	recursiveReverseDisplayLinkedList(head);
 	cout << endl << recursiveCountNode(head) << endl;
+	cout << AddLinkedList(head) << endl;
+	cout << maxLinkedList(head) << endl;
 }

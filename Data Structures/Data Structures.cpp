@@ -1292,7 +1292,24 @@ public:
 	Node* next;
 };
 
+void recursiveDisplayLinkedList(Node* p)
+{
+	if (p != NULL)
+	{
+		cout << p->data << " -> "<< flush;
+		recursiveDisplayLinkedList(p->next);
+	}
+}
 
+
+void recursiveReverseDisplayLinkedList(Node*p)
+{
+	if (p != NULL)
+	{
+		recursiveReverseDisplayLinkedList(p->next);
+		cout << p->data << " -> " <<flush;
+	}
+}
 
 
 int main()
@@ -1312,7 +1329,6 @@ int main()
 	Node* last;
 
 	head->data = A[0];
-	cout << head->next << endl;
 	last = head;
 
 	// Create a Linked List
@@ -1332,13 +1348,11 @@ int main()
 
 	// Display Linked List
 	Node* p = head;
-	cout << p->next << endl;
 	while (p != nullptr) {
 		cout << p->data << " -> " << flush;
-		cout << p->next<<endl;
 		p = p->next;
 	}
-
-
+	cout << endl;
+	recursiveReverseDisplayLinkedList(head);
 
 }

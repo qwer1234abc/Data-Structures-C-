@@ -1285,11 +1285,84 @@ int main()
 }
 */
 
-class Node
-{
+class Node {
 public:
 	int data;
 	Node* next;
+
+	Node(int value) {
+		data = value;
+		next = nullptr;
+	}
+};
+
+class LinkedList {
+private:
+	Node* first;
+
+public:
+	LinkedList() {
+		first = nullptr;
+	}
+
+	void create(int A[], int n) {
+		Node* t, * last;
+		first = new Node(A[0]);
+		last = first;
+
+		for (int i = 1; i < n; i++) {
+			t = new Node(A[i]);
+			t->next = nullptr;
+			last->next = t;
+			last = t;
+		}
+	}
+
+	void display() {
+		Node* p = first;
+
+		while (p != nullptr) {
+			cout << p->data << " ";
+			p = p->next;
+		}
+
+		cout << endl;
+	}
+
+	int count() {
+		Node* p = first;
+		int count = 0;
+
+		while (p != nullptr) {
+			count++;
+			p = p->next;
+		}
+
+		return count;
+	}
+
+	void insert(int index, int x) {
+		Node* t = new Node(x);
+
+		if (index < 0 || index > count()) {
+			return;
+		}
+
+		if (index == 0) {
+			t->next = first;
+			first = t;
+		}
+		else {
+			Node* p = first;
+
+			for (int i = 0; i < index - 1; i++) {
+				p = p->next;
+			}
+
+			t->next = p->next;
+			p->next = t;
+		}
+	}
 };
 
 void recursiveDisplayLinkedList(Node* p)
@@ -1396,13 +1469,13 @@ int recursiveMaxLinkedList(Node* p)
 
 // Searching in a linked list ( cannot use binary search )
 
-bool searchLinkedList(Node * p, int key)
+Node* searchLinkedList(Node* p, int key)
 {
-	while (p!= 0)
+	while (p != 0)
 	{
-		if (p-> data == key)
+		if (p->data == key)
 		{
-			return true;
+			return p;
 		}
 		else
 		{
@@ -1410,12 +1483,12 @@ bool searchLinkedList(Node * p, int key)
 		}
 
 	}
-	return false;
+	return NULL;
 
 }
 
 
-Node * recursiveSearchLinkedList(Node * p, int key)
+Node* recursiveSearchLinkedList(Node* p, int key)
 {
 	if (p == NULL)
 	{
@@ -1435,6 +1508,71 @@ Node * recursiveSearchLinkedList(Node * p, int key)
 }
 
 
+// Improved version of linear search, transposition and move to head
+
+Node* moveToHeadSearchLinkedList(Node* p, int key)
+{
+	Node* q = new Node{p->data};
+	while (p != NULL)
+	{
+		if (key == p->data)
+		{
+
+			q->next = p->next;
+			p->next = p;
+			return p;
+		}
+		else
+		{
+			q = p;
+			p = p->next;
+		}
+
+	}
+	return NULL;
+}
+
+// Inserting into a linked list
+// Insert before first node
+// Inserting after given position
+int countLinkedList(Node* p)
+{
+	int l = 0;
+	while (p)
+	{
+		l++;
+		p = p->next;
+	}
+
+	return l;
+}
+void insertLinkedList(Node* p, int index, int x)
+{
+	Node* t = NULL;
+	int i;
+	if (index < 0 || index > countLinkedList(p))
+	{
+		return;
+	}
+	else
+	{
+		t = new Node{x};
+	}
+	if (index == 0)
+	{
+		t->next = p;
+		p = t;
+	}
+	else
+	{
+		for (i = 0; i < index - 1; i++)
+		{
+			p = p->next;
+		}
+		t->next = p->next;
+		p->next = t;
+	}
+}
 
 int main()
 {
@@ -1447,7 +1585,7 @@ int main()
 
 	int A[] = { 3, 5, 7, 10, 15 };
 
-	Node* head = new Node;
+	Node* head = new Node{A[0]};
 
 	Node* temp;
 	Node* last;
@@ -1459,11 +1597,7 @@ int main()
 	for (int i = 1; i < sizeof(A) / sizeof(A[0]); i++) {
 
 		// Create a temporary Node
-		temp = new Node;
-
-		// Populate temporary Node
-		temp->data = A[i];
-		temp->next = nullptr;
+		temp = new Node{A[i]};
 
 		// last's next is pointing to temp
 		last->next = temp;
@@ -1481,5 +1615,12 @@ int main()
 	cout << endl << recursiveCountNode(head) << endl;
 	cout << AddLinkedList(head) << endl;
 	cout << maxLinkedList(head) << endl;
-	cout << recursiveSearchLinkedList(head,15) << endl;
+	cout << recursiveSearchLinkedList(head, 15) << endl;
+	recursiveDisplayLinkedList(head);
+	insertLinkedList(head, 0, 11);
+	int B[] = { 10, 20, 30, 40, 50 };
+	LinkedList list;
+	list.create(B, 5);
+	list.insert(0, 5);
+	list.display();
 }

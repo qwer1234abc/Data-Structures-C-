@@ -1517,7 +1517,6 @@ public:
 		first = nullptr;
 		last = nullptr;
 	}
-
 	void create(int A[], int n) {
 		Node* t;
 		first = new Node(A[0]);
@@ -1608,6 +1607,41 @@ public:
 
 	}
 
+	// Deleting from linked list
+	// Delete first node
+	// Delete node at any give position
+
+	int deleteLinkedList(int index)
+	{
+		Node* q = new Node(NULL);
+		Node* p = first;
+		int x = -1;
+		if (index < 0 || index > count())
+		{
+			return -1;
+		}
+		if (index == 0)
+		{
+			q = p;
+			x = p->data;
+			p = p->next;
+			delete q;
+			return x;
+		}
+		else
+		{
+			for (int i = 0; i < index; i++)
+			{
+				q = p;
+				p = p->next;
+			}
+			q->next = p->next;
+			x = p->data;
+			delete p;
+			return x;
+		}
+	}
+
 };
 int main()
 {
@@ -1666,5 +1700,7 @@ int main()
 	// Insert into last (create)
 	list2.insertLast(6);
 	list2.insertSortedLinkedList(3);
+	list2.display();
+	list2.deleteLinkedList(1);
 	list2.display();
 }

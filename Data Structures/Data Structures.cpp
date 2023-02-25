@@ -1285,86 +1285,9 @@ int main()
 }
 */
 
-class Node {
-public:
-	int data;
-	Node* next;
 
-	Node(int value) {
-		data = value;
-		next = nullptr;
-	}
-};
-
-class LinkedList {
-private:
-	Node* first;
-
-public:
-	LinkedList() {
-		first = nullptr;
-	}
-
-	void create(int A[], int n) {
-		Node* t, * last;
-		first = new Node(A[0]);
-		last = first;
-
-		for (int i = 1; i < n; i++) {
-			t = new Node(A[i]);
-			t->next = nullptr;
-			last->next = t;
-			last = t;
-		}
-	}
-
-	void display() {
-		Node* p = first;
-
-		while (p != nullptr) {
-			cout << p->data << " ";
-			p = p->next;
-		}
-
-		cout << endl;
-	}
-
-	int count() {
-		Node* p = first;
-		int count = 0;
-
-		while (p != nullptr) {
-			count++;
-			p = p->next;
-		}
-
-		return count;
-	}
-
-	void insert(int index, int x) {
-		Node* t = new Node(x);
-
-		if (index < 0 || index > count()) {
-			return;
-		}
-
-		if (index == 0) {
-			t->next = first;
-			first = t;
-		}
-		else {
-			Node* p = first;
-
-			for (int i = 0; i < index - 1; i++) {
-				p = p->next;
-			}
-
-			t->next = p->next;
-			p->next = t;
-		}
-	}
-};
-
+/*
+ *
 void recursiveDisplayLinkedList(Node* p)
 {
 	if (p != NULL)
@@ -1436,7 +1359,7 @@ int recursiveAddLinkedList(Node* p)
 }
 
 
-// Maximum Element in linked list 
+// Maximum Element in linked list
 
 int maxLinkedList(Node* p)
 {
@@ -1573,7 +1496,101 @@ void insertLinkedList(Node* p, int index, int x)
 		p->next = t;
 	}
 }
+ */
+class Node {
+public:
+	int data;
+	Node* next;
 
+	Node(int value) {
+		data = value;
+		next = nullptr;
+	}
+};
+
+class LinkedList {
+private:
+	Node* first;
+	Node* last;
+public:
+	LinkedList() {
+		first = nullptr;
+		last = nullptr;
+	}
+
+	void create(int A[], int n) {
+		Node* t;
+		first = new Node(A[0]);
+		last = first;
+
+		for (int i = 1; i < n; i++) {
+			t = new Node(A[i]);
+			t->next = nullptr;
+			last->next = t;
+			last = t;
+		}
+	}
+
+	void display() {
+		Node* p = first;
+
+		while (p != nullptr) {
+			cout << p->data << " ";
+			p = p->next;
+		}
+
+		cout << endl;
+	}
+
+	int count() {
+		Node* p = first;
+		int count = 0;
+
+		while (p != nullptr) {
+			count++;
+			p = p->next;
+		}
+
+		return count;
+	}
+
+	void insert(int index, int x) {
+		Node* t = new Node(x);
+
+		if (index < 0 || index > count()) {
+			return;
+		}
+
+		if (index == 0) {
+			t->next = first;
+			first = t;
+		}
+		else {
+			Node* p = first;
+
+			for (int i = 0; i < index - 1; i++) {
+				p = p->next;
+			}
+
+			t->next = p->next;
+			p->next = t;
+		}
+	}
+
+	void insertLast(int x)
+	{
+		Node* t = new Node(x);
+		if (first == nullptr)
+		{
+			first = last = t;
+		}
+		else
+		{
+			last->next = t;
+			last = t;
+		}
+	}
+};
 int main()
 {
 	// Linked List
@@ -1582,7 +1599,8 @@ int main()
 	// Linked List is a collections of nodes where each node contains data and pointed to next node
 	// Node consists of data and pointer to next node
 	// pointer of its on type (a node)
-
+	/*
+	 *
 	int A[] = { 3, 5, 7, 10, 15 };
 
 	Node* head = new Node{A[0]};
@@ -1618,9 +1636,16 @@ int main()
 	cout << recursiveSearchLinkedList(head, 15) << endl;
 	recursiveDisplayLinkedList(head);
 	insertLinkedList(head, 0, 11);
+	 */
+	int A[] = { 1,2,3,4,5 };
 	int B[] = { 10, 20, 30, 40, 50 };
-	LinkedList list;
-	list.create(B, 5);
-	list.insert(0, 5);
-	list.display();
+	LinkedList list1;
+	LinkedList list2;
+	list1.create(B, 5);
+	list1.insert(0, 5);
+	list1.display();
+
+	list2.create(A, 5);
+	list2.insertLast(6);
+	list2.display();
 }

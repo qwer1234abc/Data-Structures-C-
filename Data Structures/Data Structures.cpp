@@ -1642,6 +1642,33 @@ public:
 		}
 	}
 
+
+	// Check if linked list is sorted
+
+	bool checkSorted()
+	{
+		Node* p = first;
+		int x = p->data;
+
+		while (p)
+		{
+			if (p->data < x)
+			{
+				return false;
+			}
+			else
+			{
+				x = p->data;
+				p = p->next;
+			}
+		}
+		return true;
+
+	}
+
+
+
+
 };
 int main()
 {
@@ -1698,9 +1725,10 @@ int main()
 	list1.display();
 	list2.create(A, 5);
 	// Insert into last (create)
-	list2.insertLast(6);
+	list2.insertLast(2);
 	list2.insertSortedLinkedList(3);
 	list2.display();
 	list2.deleteLinkedList(1);
 	list2.display();
+	cout << list2.checkSorted() << endl;
 }

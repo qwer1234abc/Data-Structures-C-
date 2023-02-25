@@ -1666,7 +1666,26 @@ public:
 
 	}
 
+	// Remove duplicates from linked list
 
+	void removeDuplicates()
+	{
+		Node* q = new Node(NULL);
+		Node* p = first;
+		q = p->next;
+
+		while(q)
+		{
+			if (q->data == p->data)
+			{
+				p->next = q->next;
+				delete q;
+				q = p->next;
+			}
+			p = q;
+			q = q->next;
+		}
+	}
 
 
 };
@@ -1725,10 +1744,12 @@ int main()
 	list1.display();
 	list2.create(A, 5);
 	// Insert into last (create)
-	list2.insertLast(2);
+	list2.insertLast(6);
 	list2.insertSortedLinkedList(3);
 	list2.display();
 	list2.deleteLinkedList(1);
 	list2.display();
 	cout << list2.checkSorted() << endl;
+	list2.removeDuplicates();
+	list2.display();
 }

@@ -1590,6 +1590,24 @@ public:
 			last = t;
 		}
 	}
+
+	// Insert into a sorted linked list
+	// Use tailing pointer
+	void insertSortedLinkedList(int x)
+	{
+		Node* t = new Node(x);
+		Node* q = new Node(NULL);
+		Node* p = first;
+		while (p && p->data < x)
+		{
+			q = p;
+			p = p->next;
+		}
+		t->next = p;
+		q->next = t;
+
+	}
+
 };
 int main()
 {
@@ -1644,8 +1662,9 @@ int main()
 	list1.create(B, 5);
 	list1.insert(0, 5);
 	list1.display();
-
 	list2.create(A, 5);
+	// Insert into last (create)
 	list2.insertLast(6);
+	list2.insertSortedLinkedList(3);
 	list2.display();
 }

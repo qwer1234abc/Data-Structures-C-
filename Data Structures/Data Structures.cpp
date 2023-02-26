@@ -1735,18 +1735,70 @@ public:
 
 	void recursiveReverseLinkedList(Node* q = NULL, Node* p = NULL)
 	{
-		p = first;
-		if (p == NULL)
-		{
-			recursiveReverseLinkedList(p, p->next);
+		if (p == NULL) {
+			p = first;
+		}
+		if (p == NULL) {
+			// Empty list, nothing to reverse
+			return;
+		}
+		if (p->next == NULL) {
+			// Last node, set it as the new head
+			first = p;
 			p->next = q;
+			return;
+		}
+		Node* r = p->next;
+		p->next = q;
+		recursiveReverseLinkedList(p, r);
+	}
+
+	// Concatenating 2 linked lists
+
+	void mergeLinkedList(LinkedList* list2)
+	{
+		Node* p1 = first;
+		Node* p2 = list2->first;
+		Node* third = nullptr;
+		Node* last = nullptr;
+		if (p1->data < p2->data)
+		{
+			third = last = p1;
+			p1 = p1->next;
+			last->next = nullptr;
 		}
 		else
 		{
-			first = q;
+			third = last = p2;
+			p2 = p2->next;
+			last->next = nullptr;
+		}
+		while (p1 != nullptr && p2 != nullptr)
+		{
+			if (p1->data < p2->data)
+			{
+				last->next = p1;
+				last = p1;
+				p1 = p1->next;
+				last->next = nullptr;
+			}
+			else
+			{
+				last->next = p2;
+				last = p2;
+				p2 = p2->next;
+				last->next = nullptr;
+			}
+		}
+		if (p1 != nullptr)
+		{
+			last->next = p1;
+		}
+		else
+		{
+			last->next = p2;	
 		}
 	}
-
 
 };
 int main()
@@ -1816,5 +1868,8 @@ int main()
 	list2.display();
 	list2.linkReverseLinkedList();
 	list2.display();
+	list2.recursiveReverseLinkedList();
+	list2.display();
+	list2.mergeLinkedList(&list1);
 	list2.display();
 }

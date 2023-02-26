@@ -1800,6 +1800,22 @@ public:
 		}
 	}
 
+	// Check for loop in linked list. Loop means last node is pointing on some node on a linked list then its a loop. 
+	// Imagine a circular race track of cars of different speed
+	bool isLoopLinkedList()
+	{
+		Node* p = first;
+		Node* q = first;
+		do
+		{
+			p = p->next;
+			q = q->next;
+			q = q != nullptr ? q->next: nullptr;
+		} while (p && q);
+		return p == q ? true : false;
+	}
+
+
 };
 int main()
 {
@@ -1870,6 +1886,7 @@ int main()
 	list2.display();
 	list2.recursiveReverseLinkedList();
 	list2.display();
+	list2.recursiveReverseLinkedList();
 	list2.mergeLinkedList(&list1);
 	list2.display();
 }

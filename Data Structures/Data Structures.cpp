@@ -1533,7 +1533,7 @@ public:
 	void display() {
 		Node* p = first;
 
-		while (p != nullptr) {
+		while (p != NULL) {
 			cout << p->data << " ";
 			p = p->next;
 		}
@@ -1674,7 +1674,7 @@ public:
 		Node* p = first;
 		q = p->next;
 
-		while(q)
+		while (q)
 		{
 			if (q->data == p->data)
 			{
@@ -1687,12 +1687,72 @@ public:
 		}
 	}
 
+	// Reversing a linked list
+	// Reversing elements
+	// Reversing links
+
+	void elementReverseLinkedList(int size)
+	{
+		int* A;
+		A = new int[size];
+		Node* p = first;
+		int i = 0;
+		while (p)
+		{
+			A[i] = p->data;
+			p = p->next;
+			i++;
+		}
+		p = first; i--;
+		while (p)
+		{
+			p->data = A[i];
+			p = p->next;
+			i--;
+		}
+		delete[]A;
+	}
+
+
+	// using 3 sliding pointers
+	void linkReverseLinkedList() {
+		Node* p = first;
+		Node* q = NULL;
+		Node* r = NULL;
+
+		while (p != NULL) {
+			r = q;
+			q = p;
+			p = p->next;
+			q->next = r;
+		}
+
+		first = q;
+	}
+
+
+	// Recursive method
+
+	void recursiveReverseLinkedList(Node* q = NULL, Node* p = NULL)
+	{
+		p = first;
+		if (p == NULL)
+		{
+			recursiveReverseLinkedList(p, p->next);
+			p->next = q;
+		}
+		else
+		{
+			first = q;
+		}
+	}
+
 
 };
 int main()
 {
 	// Linked List
-	// Array is fixed size which is not good during run time
+	// Array is fixed size which is not good during run		
 
 	// Linked List is a collections of nodes where each node contains data and pointed to next node
 	// Node consists of data and pointer to next node
@@ -1751,5 +1811,10 @@ int main()
 	list2.display();
 	cout << list2.checkSorted() << endl;
 	list2.removeDuplicates();
+	list2.display();
+	list2.elementReverseLinkedList(sizeof(A) / sizeof(int));
+	list2.display();
+	list2.linkReverseLinkedList();
+	list2.display();
 	list2.display();
 }

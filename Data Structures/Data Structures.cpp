@@ -1827,6 +1827,7 @@ public:
 	void Display();
 	void recursiveDisplay(Node* p);
 	Node* getHead() { return head; }
+	void insert(Node* p, int value, int position);
 	~CircularLinkedList();
 
 
@@ -1889,7 +1890,38 @@ CircularLinkedList::~CircularLinkedList() {
 	}
 
 }
-
+void CircularLinkedList:: insert(Node* p, int value, int position)
+{
+	Node* t = new Node(value);
+	if (position == 0)
+	{
+		if (head == NULL)
+		{
+			head = t;
+			head->next = head;
+		}
+		else
+		{
+			p = head;
+			while(p->next != head)
+			{
+				p = p->next;
+			}
+			p->next = t;
+			t->next = head;
+			head = t;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < position -1; i++)
+		{
+			p = p->next;
+		}
+		t->next = p->next;
+		p->next = t;
+	}
+}
 
 int main()
 {
@@ -1972,5 +2004,9 @@ int main()
 
 	Node* h = cl.getHead();
 	cl.recursiveDisplay(h);
+	cout << '\n';
+	cl.insert(h, 0, 0);
+	Node* h2 = cl.getHead();
+	cl.recursiveDisplay(h2);
 
 }

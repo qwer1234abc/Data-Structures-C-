@@ -1828,6 +1828,8 @@ public:
 	void recursiveDisplay(Node* p);
 	Node* getHead() { return head; }
 	void insert(Node* p, int value, int position);
+	int deleteElement(Node* p, int position);
+	int length(Node* p);
 	~CircularLinkedList();
 
 
@@ -1922,6 +1924,64 @@ void CircularLinkedList:: insert(Node* p, int value, int position)
 		p->next = t;
 	}
 }
+int CircularLinkedList:: length(Node* p)
+{
+	int len = 0;
+	do
+	{
+		len++;
+		p = p->next;
+
+	} while (p != head);
+	return len;
+}
+
+int CircularLinkedList::deleteElement(Node* p, int position)
+{
+	Node* q = new Node(NULL);
+	int x;
+	if(position < 0 || position > length(p))
+	{
+		return -1;
+	}
+	if (position == 1)
+	{
+		while(p->next != head)
+		{
+			p = p->next;
+		}
+		x = p->data;
+		if(p == head)
+		{
+			delete head;
+			p = NULL;
+		}
+		else
+		{
+			p->next = head->next;
+			delete head;
+			head = p->next;
+		}
+	}
+	else
+	{
+		for (int i =0; i < position -2; i ++)
+		{
+			p = p->next;
+		}
+		q = p->next;
+		p->next = q->next;
+		x = q->data;
+		delete q;
+	}
+	return x;
+
+}
+
+
+
+
+
 
 int main()
 {
@@ -2008,5 +2068,9 @@ int main()
 	cl.insert(h, 0, 0);
 	Node* h2 = cl.getHead();
 	cl.recursiveDisplay(h2);
+	cl.deleteElement(h2, 3);
+	Node* h3 = cl.getHead();
+	cout << '\n';
+	cl.Display();
 
 }

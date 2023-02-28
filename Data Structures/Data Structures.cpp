@@ -1978,10 +1978,69 @@ int CircularLinkedList::deleteElement(Node* p, int position)
 
 }
 
+// Double Link List
+// Bi-Directional, able to go forward and backwards
 
+class DoublyNode
+{
+public:
+	DoublyNode* prev;
+	int data;
+	DoublyNode* next;
 
+	DoublyNode(int value) {
+		data = value;
+		next = nullptr;
+	}
+};
+class DoublyLinkedList
+{
+private:
+	DoublyNode* first;
 
+public:
+	DoublyNode* getFirst()
+	{
+		return first;
+	}
+	DoublyLinkedList(int* A, int n)
+	{
+		DoublyNode* t, * last;
 
+		first = new DoublyNode(A[0]);
+		first->prev = first->next = nullptr;
+		last = first;
+
+		for (int i =1; i < n; i ++)
+		{
+			t = new DoublyNode(A[i]);
+			t->next = last->next;
+			t->prev = last;
+			last->next = t;
+			last = t;
+		}
+	}
+	void display()
+	{
+		DoublyNode* p = first;
+		while (p)
+		{
+			cout << p->data << " ";
+			p = p->next;
+		}
+		cout << endl;
+	}
+	int length(DoublyNode* p)
+	{
+		int len = 0;
+		while (p)
+		{
+			len++;
+			p = p->next;
+		}
+		return len;
+	}
+};
 
 int main()
 {
@@ -2073,4 +2132,10 @@ int main()
 	cout << '\n';
 	cl.Display();
 
+
+	int D[5] = { 1 ,2 ,3 ,4,5 };
+
+	DoublyLinkedList dlist(D, sizeof(D) / sizeof(int));
+
+	dlist.display();
 }

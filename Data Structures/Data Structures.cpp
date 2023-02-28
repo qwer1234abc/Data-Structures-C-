@@ -1892,7 +1892,7 @@ CircularLinkedList::~CircularLinkedList() {
 	}
 
 }
-void CircularLinkedList:: insert(Node* p, int value, int position)
+void CircularLinkedList::insert(Node* p, int value, int position)
 {
 	Node* t = new Node(value);
 	if (position == 0)
@@ -1905,7 +1905,7 @@ void CircularLinkedList:: insert(Node* p, int value, int position)
 		else
 		{
 			p = head;
-			while(p->next != head)
+			while (p->next != head)
 			{
 				p = p->next;
 			}
@@ -1916,7 +1916,7 @@ void CircularLinkedList:: insert(Node* p, int value, int position)
 	}
 	else
 	{
-		for (int i = 0; i < position -1; i++)
+		for (int i = 0; i < position - 1; i++)
 		{
 			p = p->next;
 		}
@@ -1924,7 +1924,7 @@ void CircularLinkedList:: insert(Node* p, int value, int position)
 		p->next = t;
 	}
 }
-int CircularLinkedList:: length(Node* p)
+int CircularLinkedList::length(Node* p)
 {
 	int len = 0;
 	do
@@ -1940,18 +1940,18 @@ int CircularLinkedList::deleteElement(Node* p, int position)
 {
 	Node* q = new Node(NULL);
 	int x;
-	if(position < 0 || position > length(p))
+	if (position < 0 || position > length(p))
 	{
 		return -1;
 	}
 	if (position == 1)
 	{
-		while(p->next != head)
+		while (p->next != head)
 		{
 			p = p->next;
 		}
 		x = p->data;
-		if(p == head)
+		if (p == head)
 		{
 			delete head;
 			p = NULL;
@@ -1965,7 +1965,7 @@ int CircularLinkedList::deleteElement(Node* p, int position)
 	}
 	else
 	{
-		for (int i =0; i < position -2; i ++)
+		for (int i = 0; i < position - 2; i++)
 		{
 			p = p->next;
 		}
@@ -2011,7 +2011,7 @@ public:
 		first->prev = first->next = nullptr;
 		last = first;
 
-		for (int i =1; i < n; i ++)
+		for (int i = 1; i < n; i++)
 		{
 			t = new DoublyNode(A[i]);
 			t->next = last->next;
@@ -2039,6 +2039,37 @@ public:
 			p = p->next;
 		}
 		return len;
+	}
+
+	void insert(DoublyNode* p, int x, int pos)
+	{
+		DoublyNode* t = NULL;
+		t = new DoublyNode(x);
+		if (pos < 0 || pos > length(p))
+		{
+			return;
+		}
+		if (pos == 0)
+		{
+			t->prev = nullptr;
+			t->next = first;
+			first->prev = t;
+			first = t;
+		}
+		else
+		{
+			for (int i = 0; i < pos-1; i++)
+			{
+				p = p->next;
+			}
+			t->next = p->next;
+			t->prev = p;
+			if(p->next)
+			{
+				p->next->prev = t;
+			}
+			p->next = t;
+		}
 	}
 };
 
@@ -2136,6 +2167,6 @@ int main()
 	int D[5] = { 1 ,2 ,3 ,4,5 };
 
 	DoublyLinkedList dlist(D, sizeof(D) / sizeof(int));
-
+	dlist.insert(dlist.getFirst(), 4, 3);
 	dlist.display();
 }

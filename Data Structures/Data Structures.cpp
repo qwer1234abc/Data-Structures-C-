@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <stack>
 using namespace std;
 
 
@@ -1506,13 +1507,19 @@ public:
 		data = value;
 		next = nullptr;
 	}
+
 };
 
 class LinkedList {
 private:
 	Node* first;
 	Node* last;
+	Node* second;
 public:
+	Node* getHead()
+	{
+		return first;
+	}
 	LinkedList() {
 		first = nullptr;
 		last = nullptr;
@@ -1528,6 +1535,22 @@ public:
 			last->next = t;
 			last = t;
 		}
+	}
+	void createSecond(int A[], int n, Node* p) {
+		Node* temp;
+		Node* tail;
+
+		second = new Node(A[0]);
+		second->next = nullptr;
+		tail = second;
+
+		for (int i = 1; i < n; i++) {
+			temp = new Node(A[i]);
+			temp->next = nullptr;
+			tail->next = temp;
+			tail = temp;
+		}
+		tail->next = p;
 	}
 
 	void display() {
@@ -1814,7 +1837,50 @@ public:
 		} while (p && q);
 		return p == q ? true : false;
 	}
+	// Student Challenge: Find middle element of linked list
 
+	int middle()
+	{
+		Node* p = first;
+		int count = 0;
+		int x;
+		while(p)
+		{
+			count++;
+			p = p->next;
+		}
+		p = first;
+		for (int i =0; i< count/2; i++)
+		{
+			p = p->next;
+			x = p->data;
+		}
+		return x;
+	}
+
+	void Intersection(Node* p, Node* q) {
+		// Populate first stack
+		stack<Node*> stk1;
+		while (p != nullptr) {
+			stk1.push(p);
+			p = p->next;
+		}
+
+		// Populate second stack
+		stack<Node*> stk2;
+		while (q != nullptr) {
+			stk2.push(q);
+			q = q->next;
+		}
+
+		Node* r = NULL;
+		while (stk1.top() == stk2.top()) {
+			r = stk1.top();
+			stk1.pop();
+			stk2.pop();
+		}
+		cout << "Intersecting Node: " << r->data << endl;
+	}
 
 };
 // Circular linked list
@@ -2123,11 +2189,21 @@ public:
 			}
 		}
 	}
-
-
-
-
 };
+
+
+/* Array vs Linked List
+Fix size vs variable size
+Used when you are sure whats the maximum sized for array
+Linked List take extra space
+Access sequentially for Linked List and indirect access
+*/
+
+
+
+
+
+
 
 int main()
 {
@@ -2227,5 +2303,25 @@ int main()
 	dlist.deleteElement(dlist.getFirst(), 3);
 	dlist.reverse(dlist.getFirst());
 	dlist.display();
+
+	int E[7] = { 1,2,3,4,5,6,7 };
+	int F[] = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21 };
+	int G[] = { 2, 4, 6, 8, 10 };
+	LinkedList list4;
+	LinkedList list5;
+	Node* temp = list5.getHead();
+	int i = 5;
+	while (i > 0) {
+		temp = temp->next;
+		i--;
+	}
+	list4.create(F, sizeof(F) / sizeof(int));
+	list5.createSecond(G, sizeof(G) / sizeof(int), temp);
+
+	LinkedList list3;
+	list3.create(E, 7);
+	cout << list3.middle() << endl;
+
+	list4.Intersection(list4.getHead(), list5.getHead());
 
 }

@@ -2058,19 +2058,75 @@ public:
 		}
 		else
 		{
-			for (int i = 0; i < pos-1; i++)
+			for (int i = 0; i < pos - 1; i++)
 			{
 				p = p->next;
 			}
 			t->next = p->next;
 			t->prev = p;
-			if(p->next)
+			if (p->next)
 			{
 				p->next->prev = t;
 			}
 			p->next = t;
 		}
 	}
+
+	int deleteElement(DoublyNode* p, int pos)
+	{
+
+		int x = -1;
+		if(pos < 1 || pos > length(p))
+		{
+			return x;
+		}
+		if (pos == 1)
+		{
+			p = p->next;
+			if(p)
+			{
+				p->prev = nullptr;
+			}
+			x = p->data;
+			delete p;
+		}
+		else
+		{
+			for (int i = 0; i < pos - 1; i++)
+			{
+				p = p->next;
+
+			}
+			p->prev->next = p->next;
+			if(p->next)
+			{
+				p->next->prev = p->prev;
+			}
+			x = p->data;
+			delete p;
+		}
+		return x;
+	}
+
+
+	void reverse(DoublyNode* p)
+	{
+		while(p != nullptr)
+		{
+			DoublyNode* temp = p->next;
+			p->next = p->prev;
+			p->prev = temp;
+			p = p->prev;
+			if(p != nullptr && p->next == nullptr)
+			{
+				first = p;
+			}
+		}
+	}
+
+
+
+
 };
 
 int main()
@@ -2168,5 +2224,8 @@ int main()
 
 	DoublyLinkedList dlist(D, sizeof(D) / sizeof(int));
 	dlist.insert(dlist.getFirst(), 4, 3);
+	dlist.deleteElement(dlist.getFirst(), 3);
+	dlist.reverse(dlist.getFirst());
 	dlist.display();
+
 }

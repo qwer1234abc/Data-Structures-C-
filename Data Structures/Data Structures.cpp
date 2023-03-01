@@ -2711,3 +2711,10 @@ int main() {
 // Linked representation of Binary Tree
 // Number of nullptr = n + 1
 // Number of external nodes = internal nodes + 1
+
+
+
+// Full vs Complete Binary Tree
+// If a tree is full it is complete
+// For complete last row need to be filled left to right
+// Array must be fully filled if used

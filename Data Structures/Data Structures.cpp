@@ -2717,4 +2717,13 @@ int main() {
 // Full vs Complete Binary Tree
 // If a tree is full it is complete
 // For complete last row need to be filled left to right
-// Array must be fully filled if used
+// No blank spaces between elements
+
+
+// Strict vs Complete Binary Tree
+
+// Binary Tree Traversal
+// Pre-order: visit(node), pre-order(left subtree), pre-order(right subtree)
+// In-order: In-order(left), visit(node), in-order(right)
+// Post-order: post-order(left), post-order(right), visit (node)
+// Level-order: level by level

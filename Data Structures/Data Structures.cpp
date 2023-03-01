@@ -2674,3 +2674,5 @@ int main() {
 // number of nodes in a binary tree: h+1<= n <= 2^h+1 - 1
 // height of binary tree: log base 2 (n + 1) -1 <= h <= n - 1
 
+// Internal Nodes vs External Nodes in Binary Tree
+// Number of deg(0) = deg(2) + 1 (Always true in binary tree)

@@ -2679,3 +2679,7 @@ int main() {
 
 // Strict Binary Trees
 // Either 0 children or 2 children
+// min nodes from height = 2h + 1
+// max nodes from height = 2^h+1 - 1
+// min height from nodes = log base 2 (n + 1) - 1
+// max height from nodes = (n - 1) / 2

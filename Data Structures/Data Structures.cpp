@@ -2676,3 +2676,6 @@ int main() {
 
 // Internal Nodes vs External Nodes in Binary Tree
 // Number of deg(0) = deg(2) + 1 (Always true in binary tree)
+
+// Strict Binary Trees
+// Either 0 children or 2 children

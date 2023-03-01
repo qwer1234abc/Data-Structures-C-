@@ -2452,7 +2452,6 @@ int main() {
 
 	return 0;
 }
-*/
 
 // Queue
 // For empty queue front and rear is empty
@@ -2659,3 +2658,19 @@ int main() {
 	cq.dequeue();
 	return 0;
 }
+*/
+
+
+// Number of binary tree T(n) = 2nCn/ n + 1 OR t(n) n Summation i = 1 T(i-1) * T(n-i)
+// For labeled nodes: the above formula * n!
+// Number of max height tree = 2^n-1
+
+// min nodes from height: h + 1
+// max nodes from height: 2^h+1 - 1
+
+// min height from nodes: log base 2 (n + 1) - 1
+// max height from nodes: n - 1
+
+// number of nodes in a binary tree: h+1<= n <= 2^h+1 - 1
+// height of binary tree: log base 2 (n + 1) -1 <= h <= n - 1
+

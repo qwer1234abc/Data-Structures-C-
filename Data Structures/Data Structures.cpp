@@ -2706,3 +2706,8 @@ int main() {
 // Left Child = 2i
 // Right Child = 2i + 1
 // Parent = i / 2
+
+
+// Linked representation of Binary Tree
+// Number of nullptr = n + 1
+// Number of external nodes = internal nodes + 1

@@ -2683,3 +2683,18 @@ int main() {
 // min height from nodes = log base 2 (n + 1) - 1
 // max height from nodes = (n - 1) / 2
 // Number of external nodes = internal nodes + 1
+
+
+
+
+
+// M-ary Trees
+// Maximum number of degree is <= M
+
+// Strict M-ary Trees
+// Number of degree = 0 OR M
+// min nodes from height = mh + 1
+// max nodes from height = (m^h+1 -1)/(m-1)
+// min height from nodes = log base m [n(m-1)+1] - 1
+// max height from nodes = (n - 1) / m
+// Number of external nodes = 2 * internal nodes + 1

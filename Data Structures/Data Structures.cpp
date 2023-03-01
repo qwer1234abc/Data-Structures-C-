@@ -2664,18 +2664,17 @@ int main() {
 // Number of binary tree T(n) = 2nCn/ n + 1 OR t(n) n Summation i = 1 T(i-1) * T(n-i)
 // For labeled nodes: the above formula * n!
 // Number of max height tree = 2^n-1
-
 // min nodes from height: h + 1
 // max nodes from height: 2^h+1 - 1
-
 // min height from nodes: log base 2 (n + 1) - 1
 // max height from nodes: n - 1
-
 // number of nodes in a binary tree: h+1<= n <= 2^h+1 - 1
 // height of binary tree: log base 2 (n + 1) -1 <= h <= n - 1
-
 // Internal Nodes vs External Nodes in Binary Tree
 // Number of deg(0) = deg(2) + 1 (Always true in binary tree)
+
+
+
 
 // Strict Binary Trees
 // Either 0 children or 2 children
@@ -2683,3 +2682,4 @@ int main() {
 // max nodes from height = 2^h+1 - 1
 // min height from nodes = log base 2 (n + 1) - 1
 // max height from nodes = (n - 1) / 2
+// Number of external nodes = internal nodes + 1

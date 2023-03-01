@@ -2698,3 +2698,11 @@ int main() {
 // min height from nodes = log base m [n(m-1)+1] - 1
 // max height from nodes = (n - 1) / m
 // Number of external nodes = 2 * internal nodes + 1
+
+
+
+// Representation of Binary Tree
+// Take element as i
+// Left Child = 2i
+// Right Child = 2i + 1
+// Parent = i / 2
